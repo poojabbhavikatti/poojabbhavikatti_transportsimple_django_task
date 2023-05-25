@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>Answer Question</h1>
+    <h3>{{ question.id }}</h3>
+    <h3>{{ question.title }}</h3>
+    <p>{{ question.content }}</p>
+    
+    <form method="POST" action="">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

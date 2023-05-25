@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>Login here.....!!</h1>
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+        {% if login %}
+                <h1>Welcome</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ QuestionForm.as_p }}
+                    {{ AnswerForm.as_p }}
+                    <input type="submit" class="btn btn-primary" value="send">
+                </form>
+        {% else %}
+            <form action="{% url 'taskapp:user_login' %}" method="POST">
+                {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username"><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br>
+                <input type="submit" class="btn btn-primary" value="login">
+            </form>
+    </div>
+</div>
+{% endblock %}

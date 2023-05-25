@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 align="center">Quora</h1>
+  <br><br>
+  <h2>Questions</h2>
+  <ol>
+    {% for question in questions %}
+      <li>
+        <h3>{{ question.title }}</h3>
+        <p>{{ question.content }}</p>
+        <p>Asked by: {{ question.user.username }}</p>
+        <a href="{% url 'taskapp:answer' %}">Answer</a>
+      </li>
+    {% empty %}
+      <p>No questions available.</p>
+    {% endfor %}
+  </ol>
+  <a href="{% url 'taskapp:ask_question' %}">Ask a Question</a>
+{% endblock %}
+
